@@ -12,46 +12,30 @@
     /* ── HEADER ── */
     .site-header { background: #8b0000; padding: 14px 48px; display: flex; align-items: center; }
     .site-header img { height: 34px; object-fit: contain; filter: brightness(0) invert(1); }
-    /* fallback text logo if image fails */
-    .site-header .logo-text { color: #fff; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
 
     /* ── MAIN CONTENT ── */
     main { flex: 1; padding: 48px; max-width: 900px; margin: 0 auto; width: 100%; }
-
     main h1 { font-size: 1.5rem; font-weight: 600; color: #333; margin-bottom: 36px; }
 
-    /* ── FIELD: underline style ── */
+    /* ── FIELDS ── */
     .field-section { margin-bottom: 28px; }
     .field-section label { display: block; font-size: 0.9rem; color: #c0392b; font-weight: 600; margin-bottom: 8px; }
-
-    .underline-input { width: 100%; border: none; border-bottom: 1px solid #aaa; background: transparent; padding: 8px 0; font-size: 1rem; font-family: 'Source Sans 3', sans-serif; color: #333; outline: none; }
+    .underline-input { width: 100%; border: none; border-bottom: 1px solid #aaa; background: transparent; padding: 8px 0; font-size: 1rem; font-family: 'Source Sans 3', sans-serif; outline: none; }
     .underline-input:focus { border-bottom-color: #8b0000; }
-
-    /* ── DROPDOWN: underline style ── */
+    
     .underline-select-wrap { position: relative; border-bottom: 1px solid #aaa; display: flex; align-items: center; }
-    .underline-select { width: 100%; border: none; background: transparent; padding: 8px 28px 8px 0; font-size: 1rem; font-family: 'Source Sans 3', sans-serif; color: #777; outline: none; appearance: none; cursor: pointer; }
-    .underline-select:focus { color: #333; }
-    .select-arrow { position: absolute; right: 4px; color: #888; font-size: 0.9rem; pointer-events: none; }
+    .underline-select { width: 100%; border: none; background: transparent; padding: 8px 28px 8px 0; font-size: 1rem; font-family: 'Source Sans 3', sans-serif; outline: none; appearance: none; cursor: pointer; }
 
-    /* ── BOTTOM ROW: captcha + button ── */
+    /* ── CAPTCHA & BUTTON ── */
     .bottom-row { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; flex-wrap: wrap; gap: 12px; }
-
     .recaptcha-box { border: 1px solid #c8c8c8; border-radius: 3px; background: #f9f9f9; padding: 14px 18px; display: flex; align-items: center; gap: 14px; min-width: 280px; }
-    .captcha-checkbox { width: 22px; height: 22px; border: 2px solid #c8c8c8; border-radius: 2px; background: #fff; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+    .captcha-checkbox { width: 22px; height: 22px; border: 2px solid #c8c8c8; border-radius: 2px; background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; }
     .captcha-checkbox.checked { border-color: #4a9c4a; background: #4a9c4a; }
     .captcha-checkbox.checked::after { content: '✓'; color: #fff; font-size: 14px; font-weight: 700; }
-    .captcha-label { font-size: 0.9rem; color: #333; }
-    .recaptcha-logo { margin-left: auto; text-align: center; }
-    .recaptcha-logo .rc-icon { font-size: 1.3rem; color: #4a7cdc; }
-    .recaptcha-logo .rc-text { font-size: 0.62rem; color: #999; display: block; line-height: 1.3; }
-
-    .btn-consultar { background: #d8d8d8; color: #888; border: none; padding: 10px 28px; font-family: 'Source Sans 3', sans-serif; font-size: 0.92rem; cursor: not-allowed; border-radius: 2px; transition: all .2s; white-space: nowrap; }
+    
+    .btn-consultar { background: #d8d8d8; color: #888; border: none; padding: 10px 28px; font-family: 'Source Sans 3', sans-serif; font-size: 0.92rem; cursor: not-allowed; border-radius: 2px; transition: all .2s; }
     .btn-consultar.ready { background: #8b0000; color: #fff; cursor: pointer; }
     .btn-consultar.ready:hover { background: #6a0000; }
-    .btn-consultar:disabled:not(.ready) { background: #d8d8d8; color: #888; }
-
-    /* ── LEGAL NOTE ── */
-    .legal-note { margin-top: 28px; font-size: 0.82rem; color: #666; line-height: 1.6; }
 
     /* ── SPINNER / RESULT ── */
     .spinner { display: none; text-align: center; padding: 20px 0; }
@@ -61,67 +45,49 @@
 
     .result-box { display: none; margin-top: 24px; border-radius: 4px; overflow: hidden; border: 1px solid #ddd; }
     .result-box.visible { display: block; }
-    .result-header { padding: 12px 16px; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
-    .result-header.success { background: #e8f5e9; color: #2e7d32; border-bottom: 2px solid #2e7d32; }
-    .result-header.error { background: #ffebee; color: #c62828; border-bottom: 2px solid #c62828; }
-    .result-body { padding: 16px; background: #fff; font-size: 0.9rem; }
-    .result-body .name { font-weight: 700; margin-bottom: 12px; }
-    .btn-pdf { display: inline-flex; align-items: center; gap: 6px; background: #8b0000; color: #fff; padding: 9px 18px; border-radius: 2px; font-size: 0.88rem; font-weight: 600; cursor: pointer; border: none; font-family: 'Source Sans 3', sans-serif; transition: background .2s; }
-    .btn-pdf:hover { background: #6a0000; }
+    .result-header { padding: 12px 16px; font-weight: 600; font-size: 0.9rem; }
+    .result-body { padding: 16px; background: #fff; }
 
     /* ── FOOTER ── */
-    footer { background: #565656; color: #ccc; padding: 32px 48px; margin-top: auto; }
-    .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px; }
-    .footer-left .efx-logo { font-size: 1.1rem; font-weight: 700; color: #fff; font-style: italic; margin-bottom: 10px; display: block; }
-    .footer-left p { font-size: 0.78rem; color: #bbb; line-height: 1.6; max-width: 440px; }
-    .footer-right { text-align: right; font-size: 0.8rem; color: #ccc; }
-    .footer-right p { margin-bottom: 4px; }
-    .footer-right a { color: #ccc; text-decoration: none; }
-    .footer-right a:hover { color: #fff; }
+    footer { background: #565656; color: #ccc; padding: 32px 48px; margin-top: auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; font-size: 0.78rem; }
+    
+    /* ── MOBILE RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .site-header { padding: 14px 16px; }
+      main { padding: 24px 16px; }
+      .bottom-row { flex-direction: column; align-items: stretch; }
+      .recaptcha-box { min-width: auto; width: 100%; justify-content: center; }
+      .btn-consultar { width: 100%; margin-top: 10px; }
+      footer { padding: 32px 16px; flex-direction: column; text-align: center; }
+    }
   </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="site-header">
-  <img src="https://49659256.fs1.hubspotusercontent-na1.net/hubfs/49659256/PDFS/LOGOS%20AFP/LOGO%20DICOM.png"
-       alt="Equifax"
-       onerror="this.style.display='none'; document.querySelector('.logo-text').style.display='block'"/>
-  <span class="logo-text" style="display:none;">EQUIFAX</span>
+  <img src="https://49659256.fs1.hubspotusercontent-na1.net/hubfs/49659256/PDFS/LOGOS%20AFP/LOGO%20DICOM.png" alt="Equifax"/>
 </div>
 
-<!-- MAIN -->
 <main>
   <h1>Verificación de Certificados o Informes</h1>
-
   <div class="field-section">
     <label>N° de Certificado:*</label>
     <input type="text" class="underline-input" id="certificado" placeholder="" oninput="checkReady()"/>
   </div>
-
   <div class="field-section">
     <label>País:*</label>
     <div class="underline-select-wrap">
       <select class="underline-select" id="pais" onchange="checkReady()">
         <option value="">--Seleccione--</option>
         <option value="CL">Chile</option>
-        <option value="PE">Perú</option>
-        <option value="CO">Colombia</option>
-        <option value="AR">Argentina</option>
-        <option value="EC">Ecuador</option>
       </select>
-      <span class="select-arrow">▾</span>
     </div>
   </div>
 
   <div class="bottom-row">
     <div class="recaptcha-box">
       <div class="captcha-checkbox" id="captcha-box" onclick="toggleCaptcha()"></div>
-      <span class="captcha-label">No soy un robot</span>
-      <div class="recaptcha-logo">
-        <div class="rc-icon">🔒</div>
-        <span class="rc-text">reCAPTCHA<br/>Privacidad · Condiciones</span>
-      </div>
+      <span>No soy un robot</span>
     </div>
     <button class="btn-consultar" id="btn-consultar" onclick="validar()">Consultar</button>
   </div>
@@ -131,59 +97,49 @@
       <circle cx="12" cy="12" r="10" stroke="#e0e0e0" stroke-width="3"/>
       <path d="M12 2a10 10 0 0 1 10 10" stroke="#8b0000" stroke-width="3" stroke-linecap="round"/>
     </svg>
-    <p style="margin-top:6px;color:#888;font-size:0.85rem;">Consultando...</p>
   </div>
 
   <div class="result-box" id="result-box">
     <div class="result-header" id="result-header"></div>
     <div class="result-body" id="result-body"></div>
   </div>
-
-  <p class="legal-note">A través de Certificados, evitas falsificación de documentos y aseguras la autenticidad del certificado que te ha sido entregado a través de las plataformas proporcionadas por Equifax</p>
 </main>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-left">
-      <span class="efx-logo">EFX®</span>
-      <p>Copyright 2023 Equifax Inc. Todos los derechos reservados.<br/><br/>
-      Equifax y las marcas de Equifax utilizadas en este sitio son de titularidad de Equifax inc. y sus filiales.</p>
-    </div>
-    <div class="footer-right">
-      <p>Servicio al Cliente 600-3784329</p>
-      <p><a href="/cdn-cgi/l/email-protection#aecbdfdbc7c8cfd6eecbdfdbc7c8cfd680cdc2"><span class="__cf_email__" data-cfemail="6d081c18040b0c152d081c18040b0c15430e01">[email&#160;protected]</span></a></p>
-    </div>
-  </div>
+  <div><p>Copyright 2023 Equifax Inc. Todos los derechos reservados.</p></div>
+  <div><p>Servicio al Cliente 600-3784329</p></div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   const WEBHOOK = 'https://hook.us2.make.com/iq6ps3txx1jaxr91mje7sx47ynbta3kb';
   let captchaChecked = false;
 
   function toggleCaptcha() {
     captchaChecked = !captchaChecked;
-    const box = document.getElementById('captcha-box');
-    box.classList.toggle('checked', captchaChecked);
+    document.getElementById('captcha-box').classList.toggle('checked', captchaChecked);
     checkReady();
   }
 
   function checkReady() {
     const btn = document.getElementById('btn-consultar');
-    const cert = document.getElementById('certificado').value.trim();
-    const pais = document.getElementById('pais').value;
-    if (cert && pais && captchaChecked) { btn.classList.add('ready'); btn.disabled = false; }
-    else { btn.classList.remove('ready'); btn.disabled = true; }
+    if (document.getElementById('certificado').value.trim() && document.getElementById('pais').value && captchaChecked) {
+      btn.classList.add('ready'); btn.disabled = false;
+    } else { btn.classList.remove('ready'); btn.disabled = true; }
+  }
+
+  function abrirPDF(b64) {
+    let base64 = b64.startsWith('data:') ? b64.split(',')[1] : b64;
+    const binary = atob(base64); const array = new Uint8Array(binary.length);
+    for(let i=0; i<binary.length; i++) array[i] = binary.charCodeAt(i);
+    const url = URL.createObjectURL(new Blob([array], {type: 'application/pdf'}));
+    window.open(url, '_blank');
   }
 
   async function validar() {
-    const folio = document.getElementById('certificado').value.trim();
-    const pais  = document.getElementById('pais').value;
-    const uuid  = folio;
-    if (!folio || !pais || !captchaChecked) return;
-    const btn = document.getElementById('btn-consultar');
-    btn.disabled = true;
-    btn.classList.remove('ready');
+    const uuid = document.getElementById('certificado').value.trim();
+    if (!uuid || !captchaChecked) return;
+    
+    document.getElementById('btn-consultar').disabled = true;
     document.getElementById('spinner').classList.add('active');
     document.getElementById('result-box').classList.remove('visible');
 
@@ -192,57 +148,40 @@
 
     try {
       const res = await fetch(WEBHOOK, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ uuid: uuid, afp: 'DICOM' }),
-        signal: controller.signal
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ uuid: uuid, afp: 'DICOM' }), signal: controller.signal
       });
-      clearTimeout(timeout);
-      const data = await res.json();
+      clearTimeout(timeout); const data = await res.json();
       document.getElementById('spinner').classList.remove('active');
-      const box = document.getElementById('result-box');
-      const hdr = document.getElementById('result-header');
-      const bdy = document.getElementById('result-body');
+      
+      const box = document.getElementById('result-box'), hdr = document.getElementById('result-header'), bdy = document.getElementById('result-body');
+      
       if (data.found === true && data.pdf) {
         hdr.className = 'result-header success';
-        hdr.innerHTML = '<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#2e7d32"/><path d="M8 12l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Certificado válido';
-        const pdfData = data.pdf.startsWith('data:') ? data.pdf : 'data:application/pdf;base64,' + data.pdf;
-        bdy.innerHTML = '<div class="name">' + (data.name || 'Certificado encontrado') + '</div>' +
-          '<div style="margin-top:12px;border:1px solid #ddd;border-radius:4px;overflow:hidden;">' +
-          '<iframe src="' + pdfData + '" style="width:100%;height:500px;border:none;" title="Certificado PDF"></iframe></div>';
+        hdr.style.background = '#f2f2f2'; hdr.style.color = '#8b0000'; hdr.style.borderBottom = '2px solid #8b0000';
+        hdr.innerHTML = `🔒 AUTENTICIDAD VERIFICADA`;
+        bdy.innerHTML = `
+          <div style="border:1px dashed #8b0000; padding:20px; text-align:center; background:#fffaf9; border-radius:4px;">
+            <p style="color:#333; font-weight:700; font-size:1.1rem; margin-bottom:8px;">${data.name || 'Informe Comercial Válido'}</p>
+            <p style="color:#666; font-size:0.85rem; margin-bottom:20px;">Este documento ha sido emitido y verificado a través de las plataformas oficiales de Equifax.</p>
+            <button onclick="abrirPDF('${data.pdf}')" style="background:#8b0000; color:#fff; border:none; padding:10px 20px; border-radius:2px; cursor:pointer; font-weight:bold;">📄 Descargar Copia Certificada</button>
+          </div>`;
       } else if (data.found === false) {
-        hdr.className = 'result-header error';
-        hdr.innerHTML = '<svg width="16" height="16" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#c62828"/><path d="M15 9l-6 6M9 9l6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg> Certificado no encontrado';
-        bdy.innerHTML = '<p style="color:#555;font-size:0.9rem;">No se encontró ningún certificado con los datos ingresados.</p>';
+        hdr.className = 'result-header error'; 
+        hdr.style.background = '#ffebee'; hdr.style.color = '#c62828'; hdr.style.borderBottom = '2px solid #c62828';
+        hdr.innerHTML = `❌ Documento no verificado`;
+        bdy.innerHTML = `<p style="color:#555;font-size:0.9rem;">El número de certificado no existe en la base de datos.</p>`;
       } else {
-        hdr.className = 'result-header error';
-        hdr.innerHTML = '⚠️ Respuesta inesperada del servidor.';
-        bdy.innerHTML = '<p style="color:#555;font-size:0.9rem;">Intenta nuevamente en unos minutos.</p>';
+        hdr.className = 'result-header error'; hdr.innerHTML = '⚠️ Error inesperado';
       }
       box.classList.add('visible');
     } catch(err) {
-      clearTimeout(timeout);
-      document.getElementById('spinner').classList.remove('active');
+      clearTimeout(timeout); document.getElementById('spinner').classList.remove('active');
       const box = document.getElementById('result-box');
-      const hdr = document.getElementById('result-header');
-      const bdy = document.getElementById('result-body');
-      hdr.className = 'result-header error';
-      if (err.name === 'AbortError') {
-        hdr.innerHTML = '⚠️ Tiempo de espera agotado.';
-        bdy.innerHTML = '<p style="color:#555;font-size:0.9rem;">El servidor tardó demasiado. Intenta nuevamente.</p>';
-      } else {
-        hdr.innerHTML = '⚠️ No se pudo conectar con el servidor.';
-        bdy.innerHTML = '<p style="color:#555;font-size:0.9rem;">Verifica tu conexión e intenta nuevamente.</p>';
-      }
+      document.getElementById('result-header').innerHTML = '⚠️ Error de conexión.';
       box.classList.add('visible');
-    } finally {
-      btn.disabled = false;
-      checkReady();
-    }
+    } finally { checkReady(); }
   }
-
-  window.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('certificado').addEventListener('keydown', e=>{ if(e.key==='Enter') validar(); });
-    document.getElementById('btn-consultar').disabled = true;
-  });
 </script>
+</body>
+</html>
