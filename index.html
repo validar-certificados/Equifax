@@ -4,23 +4,26 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Verificación de Certificados o Informes – Equifax</title>
+  
+  <link rel="icon" href="https://www.google.com/s2/favicons?domain=equifax.com&sz=128" type="image/png" />
+  
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Source Sans 3', sans-serif; background: #f2f2f2; color: #333; min-height: 100vh; display: flex; flex-direction: column; }
-
+    
     /* ── HEADER ── */
     .site-header { background: #8b0000; padding: 14px 48px; display: flex; align-items: center; }
     .site-header img { height: 34px; object-fit: contain; filter: brightness(0) invert(1); }
-
+    
     /* ── MAIN CONTENT ── */
     main { flex: 1; padding: 48px; max-width: 900px; margin: 0 auto; width: 100%; }
-    main h1 { font-size: 1.5rem; font-weight: 600; color: #333; margin-bottom: 36px; }
-
+    main h1 { font-size: 1.5rem; font-weight: 600; margin-bottom: 36px; }
+    
     /* ── FIELDS ── */
     .field-section { margin-bottom: 28px; }
     .field-section label { display: block; font-size: 0.9rem; color: #c0392b; font-weight: 600; margin-bottom: 8px; }
-    .underline-input { width: 100%; border: none; border-bottom: 1px solid #aaa; background: transparent; padding: 8px 0; font-size: 1rem; font-family: 'Source Sans 3', sans-serif; outline: none; }
+    .underline-input, .underline-select { width: 100%; border: none; border-bottom: 1px solid #aaa; background: transparent; padding: 8px 0; font-size: 1rem; font-family: 'Source Sans 3', sans-serif; outline: none; }
     .underline-input:focus { border-bottom-color: #8b0000; }
     
     .underline-select-wrap { position: relative; border-bottom: 1px solid #aaa; display: flex; align-items: center; }
@@ -70,16 +73,20 @@
 
 <main>
   <h1>Verificación de Certificados o Informes</h1>
+  
   <div class="field-section">
     <label>N° de Certificado:*</label>
     <input type="text" class="underline-input" id="certificado" placeholder="" oninput="checkReady()"/>
   </div>
+  
   <div class="field-section">
     <label>País:*</label>
     <div class="underline-select-wrap">
       <select class="underline-select" id="pais" onchange="checkReady()">
         <option value="">--Seleccione--</option>
         <option value="CL">Chile</option>
+        <option value="EC">Ecuador</option>
+        <option value="PY">Paraguay</option>
       </select>
     </div>
   </div>
@@ -124,7 +131,9 @@
     const btn = document.getElementById('btn-consultar');
     if (document.getElementById('certificado').value.trim() && document.getElementById('pais').value && captchaChecked) {
       btn.classList.add('ready'); btn.disabled = false;
-    } else { btn.classList.remove('ready'); btn.disabled = true; }
+    } else {
+      btn.classList.remove('ready'); btn.disabled = true;
+    }
   }
 
   function abrirPDF(b64) {
@@ -164,13 +173,13 @@
           <div style="border:1px dashed #8b0000; padding:20px; text-align:center; background:#fffaf9; border-radius:4px;">
             <p style="color:#333; font-weight:700; font-size:1.1rem; margin-bottom:8px;">${data.name || 'Informe Comercial Válido'}</p>
             <p style="color:#666; font-size:0.85rem; margin-bottom:20px;">Este documento ha sido emitido y verificado a través de las plataformas oficiales de Equifax.</p>
-            <button onclick="abrirPDF('${data.pdf}')" style="background:#8b0000; color:#fff; border:none; padding:10px 20px; border-radius:2px; cursor:pointer; font-weight:bold;">📄 Descargar Copia Certificada</button>
+            <button onclick="abrirPDF('${data.pdf}')" style="background:#8b0000; color:#fff; border:none; padding:10px 20px; border-radius:2px; cursor:pointer; font-weight:bold;">📄 Descargar Copia</button>
           </div>`;
       } else if (data.found === false) {
         hdr.className = 'result-header error'; 
         hdr.style.background = '#ffebee'; hdr.style.color = '#c62828'; hdr.style.borderBottom = '2px solid #c62828';
         hdr.innerHTML = `❌ Documento no verificado`;
-        bdy.innerHTML = `<p style="color:#555;font-size:0.9rem;">El número de certificado no existe en la base de datos.</p>`;
+        bdy.innerHTML = `<p>El número de certificado no existe en la base de datos.</p>`;
       } else {
         hdr.className = 'result-header error'; hdr.innerHTML = '⚠️ Error inesperado';
       }
