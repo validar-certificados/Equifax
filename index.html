@@ -5,92 +5,264 @@
     <title>Verificación de Certificados o Informes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <link rel="icon" type="image/png" href="https://www.google.com/s2/favicons?domain=equifax.cl&sz=128">
+    <link rel="icon" type="image/x-icon" href="https://interactivereports.equifax.com/verificacion/assets/favicon.ico">
     
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700&display=swap" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700&display=swap" rel="stylesheet"/>
     
     <style>
         /* =========================================================
-           VARIABLES CORPORATIVAS (Extraídas del código fuente Angular)
-           ========================================================= */
-        :root {
-            --equifax-red: #9e1b32;
-            --equifax-red-dark: #82101f;
-            --equifax-bg: #f0f0f0;
-            --equifax-input-bg: #f6f6f6;
-            --equifax-text: rgba(0, 0, 0, 0.87);
-            --equifax-label: rgba(0, 0, 0, 0.54);
-            --font-family: 'Open Sans', sans-serif;
-        }
-
-        /* =========================================================
-           ESTILOS GLOBALES
+           ESTILOS GLOBALES (Extraídos de Angular)
            ========================================================= */
         body, html { 
+            height: 100%;
             margin: 0; 
-            padding: 0; 
-            background-color: var(--equifax-bg); 
-            font-family: var(--font-family); 
-            color: var(--equifax-text);
+            background-color: #fafafa; 
+            font-family: "Open Sans", sans-serif;
+            color: rgba(0, 0, 0, 0.87);
         }
 
         /* =========================================================
            HEADER FIJO EQUIFAX
            ========================================================= */
-        .equifax-header {
-            background-color: var(--equifax-red); 
-            padding: 15px 20px;
+        .mat-toolbar {
+            background-color: #9e1b32;
+            color: white;
+            padding: 0;
+            display: flex;
+            box-sizing: border-box;
+            width: 100%;
+            height: 64px;
+            align-items: center;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
-        .equifax-header-content {
-            max-width: 1000px;
+        .toolbar-container {
             margin: 0 auto;
+            width: 100%;
+            padding: 0 16px;
+        }
+
+        @media (min-width: 576px) { .toolbar-container { width: 540px; } }
+        @media (min-width: 768px) { .toolbar-container { width: 720px; } }
+        @media (min-width: 992px) { .toolbar-container { width: 960px; } }
+        @media (min-width: 1200px) { .toolbar-container { width: 1240px; } }
+
+        .grid-logo {
             display: flex;
             align-items: center;
+            height: 100%;
         }
 
-        .equifax-logo-img {
-            height: 32px;
-            display: block;
+        .logo-equifax {
+            max-width: 125px;
+            vertical-align: middle;
         }
 
         /* =========================================================
-           CONTENEDOR BASE
+           CONTENEDOR PRINCIPAL
            ========================================================= */
-        .main-card {
-            background-color: transparent; /* Se mimetiza con el fondo f0f0f0 */
-            max-width: 850px;
-            margin: 40px auto;
-            padding: 40px 7%;
-            box-sizing: border-box;
+        .container {
+            padding: 0 10px;
+            min-height: calc(100vh - 264px); /* Resta header y footer */
+            margin: 30px auto 30px auto;
         }
 
-        .main-title {
-            font-family: 'Roboto', sans-serif; /* Títulos en Roboto según Angular Material */
-            font-size: 24px;
-            font-weight: 400;
+        @media (min-width: 576px) { .container { max-width: 95%; } }
+        @media (min-width: 768px) { .container { padding: 0 150px; max-width: 720px; margin: 30px auto 100px auto; } }
+        @media (min-width: 992px) { .container { max-width: 960px; } }
+        @media (min-width: 1200px) { .container { max-width: 1140px; } }
+
+        .titulo-sub-bloque-responsive {
+            font-size: calc(16px + 8 * (100vw - 300px) / 1300);
+            font-weight: bold;
+            color: #5b6771;
             margin-top: 0;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(0,0,0,0.12);
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 1200px) {
+            .titulo-sub-bloque-responsive { font-size: 24px; }
         }
 
         /* =========================================================
-           ALERTAS
+           FORMULARIO Y CAMPOS (Estilo Angular Material Filled)
+           ========================================================= */
+        p.label {
+            text-align: left;
+            padding-left: 15px;
+            color: #ae0000;
+            margin-bottom: 5px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .mat-mdc-text-field-wrapper {
+            background-color: #f5f5f5; /* Color gris de Angular Material */
+            border-radius: 4px 4px 0 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+            transition: background-color 0.2s, border-bottom-color 0.2s;
+            display: flex;
+            align-items: center;
+            height: 56px;
+            padding: 0 16px;
+        }
+
+        .mat-mdc-text-field-wrapper:hover {
+            background-color: #eeeeee;
+            border-bottom-color: rgba(0, 0, 0, 0.87);
+        }
+
+        .mat-mdc-text-field-wrapper.focused {
+            border-bottom: 2px solid #9e1b32;
+            background-color: #eeeeee;
+        }
+
+        .mat-mdc-text-field-wrapper.has-error {
+            border-bottom: 2px solid #f11919;
+        }
+
+        .mdc-text-field__input {
+            width: 100%;
+            border: none;
+            background: none;
+            padding: 0;
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.87);
+            font-family: 'Open Sans', sans-serif;
+            outline: none;
+        }
+
+        select.mdc-text-field__input {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='rgba(0,0,0,0.54)'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right center;
+            background-size: 24px;
+            cursor: pointer;
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .buttons { flex-direction: row; }
+        }
+
+        /* Fake Captcha */
+        .fake-captcha {
+            border: 1px solid #dcdcdc;
+            background-color: #ffffff;
+            padding: 10px 15px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 304px;
+            height: 78px;
+            box-sizing: border-box;
+            font-size: 14px;
+            color: #222;
+        }
+        .fake-captcha input { width: 24px; height: 24px; cursor: pointer; margin-right: 8px;}
+        .captcha-logo-box { margin-left: auto; text-align: center; font-size: 9px; color: #555; }
+        .captcha-logo-box img { width: 28px; margin-bottom: 2px; }
+
+        /* Botón Angular Material */
+        .mat-mdc-raised-button {
+            background-color: #9e1b32;
+            color: white;
+            box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+            border: none;
+            height: 36px;
+            padding: 0 16px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s, box-shadow 0.2s;
+            letter-spacing: 0.5px;
+        }
+        
+        .mat-mdc-raised-button:hover:not(:disabled) {
+            background-color: #82101f;
+            box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+        }
+
+        .mat-mdc-raised-button:disabled {
+            background-color: rgba(0,0,0,0.12);
+            color: rgba(0,0,0,0.38);
+            box-shadow: none;
+            cursor: default;
+        }
+
+        .footer-card {
+            font-size: 0.8em;
+            padding: 12px 20px;
+            color: rgba(0,0,0,0.87);
+            margin-top: 10px;
+        }
+
+        /* =========================================================
+           FOOTER FIJO INFERIOR
+           ========================================================= */
+        .footer {
+            width: 100%;
+            background-color: #5f6a72;
+            color: #eeeeee;
+            font-size: 14px;
+            font-weight: 300;
+            padding: 40px 0;
+        }
+        .footer a { color: #eeeeee; text-decoration: none; }
+        
+        .footer-container {
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 0 20px;
+        }
+        
+        @media (min-width: 576px) { .footer-container { max-width: 540px; } }
+        @media (min-width: 768px) { .footer-container { max-width: 720px; flex-direction: row; justify-content: space-between; align-items: flex-start;} }
+        @media (min-width: 992px) { .footer-container { max-width: 960px; } }
+        @media (min-width: 1200px) { .footer-container { max-width: 1240px; } }
+
+        .footer-left img { margin-bottom: 10px; height: 20px; }
+        .footer-left p { margin: 0 0 5px 0; font-size: 13px; }
+        .footer-right { text-align: left; }
+        @media (min-width: 768px) { .footer-right { text-align: right; } }
+        .footer-right p { margin: 0 0 5px 0; }
+
+        /* =========================================================
+           ALERTAS Y RESULTADOS
            ========================================================= */
         .alert-error {
             display: none;
             background-color: #FDF3F3;
-            color: var(--equifax-red-dark);
+            color: #8A0000;
             border: 1px solid #E5A8A8;
             padding: 15px 20px;
             border-radius: 4px;
             margin-bottom: 25px;
-            font-size: 15px;
+            font-size: 14px;
             line-height: 1.4;
-            display: flex; 
             align-items: center;
             gap: 10px;
         }
@@ -102,282 +274,145 @@
             border-radius: 4px; 
             border: 1px solid #88C08A; 
             margin-bottom: 25px; 
-            font-size: 16px; 
+            font-size: 15px; 
             display: flex;
             align-items: center;
             gap: 15px;
         }
 
-        .alert-icon {
-            font-size: 24px;
-            flex-shrink: 0;
-        }
-
-        /* =========================================================
-           VISTA FRONTAL (FORMULARIO MATERIAL DESIGN)
-           ========================================================= */
-        .form-group {
-            margin-bottom: 30px;
-        }
-
-        .form-label {
-            display: block;
-            color: var(--equifax-red); 
-            font-size: 15px;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            background-color: var(--equifax-input-bg); 
-            border-width: 0 0 1px 0;   
-            border-color: rgba(0, 0, 0, 0.42); /* Gris oscuro Material */
-            border-style: solid;
-            border-radius: 4px 4px 0 0; /* Bordes superiores levemente redondeados típico de Material */
-            padding: 18px 15px 10px 15px;        
-            height: 56px; /* Altura oficial Material Form Field */
-            font-size: 16px;
-            color: var(--equifax-text);
-            box-sizing: border-box;
-            outline: none;
-            transition: border-color 0.2s, background-color 0.2s;
-            font-family: var(--font-family);
-        }
-
-        .form-control:focus, .form-control:hover {
-            border-color: var(--equifax-red); /* La línea se pone roja al hacer click */
-            border-width: 0 0 2px 0;
-            background-color: #eeeeee;
-        }
-
-        .form-control.has-error {
-            border-color: #f11919; /* Warn color del CSS */
-        }
-
-        select.form-control {
-            appearance: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 10px center;
-            background-size: 20px;
-        }
-
-        .action-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 35px;
-        }
-
-        .fake-captcha {
-            border: 1px solid #dcdcdc;
-            background-color: #ffffff;
-            padding: 10px 15px;
-            border-radius: 3px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            width: 280px;
-            box-sizing: border-box;
-            font-size: 14px;
-        }
-
-        .fake-captcha input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
-
-        .captcha-logo-box {
-            margin-left: auto;
-            text-align: center;
-            font-size: 9px;
-            color: var(--equifax-label);
-        }
-
-        .captcha-logo-box img {
-            width: 24px;
-            margin-bottom: 2px;
-        }
-
-        /* Botón estilo Angular Material Raised Button */
-        .btn-consultar {
-            background-color: #e0e0e0;
-            color: rgba(0,0,0,0.38);
-            border: none;
-            padding: 0 16px; 
-            height: 36px;
-            min-width: 110px;
-            font-size: 14px;
-            font-weight: 500;
-            border-radius: 4px;
-            cursor: not-allowed;
-            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
-            font-family: 'Roboto', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-consultar.active {
-            background-color: var(--equifax-red); 
-            color: #ffffff;
-            cursor: pointer;
-            box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-        }
-        .btn-consultar.active:hover {
-            background-color: var(--equifax-red-dark); 
-        }
-
-        .footer-text {
-            text-align: center;
-            font-size: 13px;
-            color: var(--equifax-label);
-            margin-top: 50px;
-            line-height: 1.5;
-        }
-
-        /* =========================================================
-           VISTA RESULTADOS (DOCUMENTO)
-           ========================================================= */
         .pdf-wrapper { 
             position: relative; 
             width: 100%; 
             height: 600px; 
-            border: 1px solid rgba(0,0,0,0.12); 
+            border: 1px solid #dcdcdc; 
             background: #fff; 
-            border-radius: 4px;
-            overflow: hidden;
         }
-        .pdf-wrapper iframe { 
-            width: 100%; 
-            height: 100%; 
-            border: none; 
-            position: relative; 
-            z-index: 1; 
-        }
-        .watermark { 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            pointer-events: none; 
-            z-index: 10; 
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='350' height='250'%3E%3Ctext x='175' y='125' dominant-baseline='middle' text-anchor='middle' transform='rotate(-45, 175, 125)' fill='%23cccccc' fill-opacity='0.35' font-family='Arial, sans-serif' font-size='20' font-weight='bold'%3ECOPIA NO VALIDO COMO CERTIFICADO%3C/text%3E%3C/svg%3E"); 
-            background-repeat: repeat; 
-        }
+        .pdf-wrapper iframe { width: 100%; height: 100%; border: none; position: relative; z-index: 1; }
+        .watermark { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='350' height='250'%3E%3Ctext x='175' y='125' dominant-baseline='middle' text-anchor='middle' transform='rotate(-45, 175, 125)' fill='%23cccccc' fill-opacity='0.35' font-family='Arial, sans-serif' font-size='20' font-weight='bold'%3ECOPIA NO VALIDO COMO CERTIFICADO%3C/text%3E%3C/svg%3E"); background-repeat: repeat; }
         
         .spinner-wrapper { display: none; text-align: center; padding: 60px 0; }
-        .spinner { border: 4px solid rgba(158, 27, 50, 0.25); border-top: 4px solid var(--equifax-red); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 15px; }
+        .spinner { border: 4px solid #e2bbc2; border-top: 4px solid #9e1b32; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 15px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
-        .btn-restart { 
-            background-color: var(--equifax-red); 
-            color: #fff; 
-            border: none; 
-            padding: 0 16px; 
-            height: 36px;
-            font-size: 14px; 
-            font-weight: 500;
-            border-radius: 4px; 
-            cursor: pointer; 
-            transition: background 0.2s; 
-            margin-top: 20px;
-            font-family: 'Roboto', sans-serif;
-            text-transform: uppercase;
-        }
-        .btn-restart:hover { background-color: var(--equifax-red-dark); }
 
     </style>
 </head>
 <body>
 
-<header class="equifax-header">
-    <div class="equifax-header-content">
-        <img src="https://49659256.fs1.hubspotusercontent-na1.net/hubfs/49659256/PDFS/LOGOS%20AFP/LOGO%20DICOM-1.png" alt="Equifax Dicom" class="equifax-logo-img">
-    </div>
-</header>
-
-<div id="front-view" class="main-card">
-    <h2 class="main-title">Verificación de Certificados o Informes</h2>
-
-    <div id="error-message" class="alert-error" style="display: none;">
-        <span class="alert-icon">⚠️</span>
-        <div><strong>Atención:</strong> No se encontraron resultados para el N° de Certificado y País ingresados. Por favor, verifique e intente nuevamente.</div>
-    </div>
-
-    <div class="form-group">
-        <label class="form-label">N° de Certificado:*</label>
-        <input type="text" id="folio_input" class="form-control" autocomplete="off" oninput="checkInput()">
-    </div>
-
-    <div class="form-group">
-        <label class="form-label">País:*</label>
-        <select id="pais_input" class="form-control" onchange="checkInput()">
-            <option value="">--Seleccione--</option>
-            <option value="CL">Chile</option>
-            <option value="AR">Argentina</option>
-            <option value="PE">Perú</option>
-        </select>
-    </div>
-
-    <div class="form-group" id="grupo_documento" style="display: none;">
-        <label class="form-label">Documento:*</label>
-        <input type="text" id="documento_input" class="form-control" placeholder="Ej: 12.345.678-9" autocomplete="off">
-    </div>
-
-    <div class="action-row">
-        <div class="fake-captcha">
-            <input type="checkbox" id="chk_robot">
-            <span>No soy un robot</span>
-            <div class="captcha-logo-box">
-                <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA"><br>
-                reCAPTCHA<br>Privacidad - Condiciones
+<nav>
+    <div class="mat-toolbar">
+        <div class="toolbar-container grid-logo">
+            <div class="logo-equifax-container">
+                <img src="https://49659256.fs1.hubspotusercontent-na1.net/hubfs/49659256/PDFS/LOGOS%20AFP/LOGO%20EQUIFAX.png" alt="Equifax" class="logo-equifax" style="filter: brightness(0) invert(1);">
             </div>
         </div>
+    </div>
+</nav>
 
-        <button class="btn-consultar" id="btn-validar" onclick="validarDicom()">CONSULTAR</button>
+<div class="container">
+    
+    <div id="front-view">
+        <div class="titulo-sub-bloque-responsive">Verificación de Certificados o Informes</div>
+
+        <div id="error-message" class="alert-error">
+            <span style="font-size: 20px;">⚠️</span>
+            <div><strong>Atención:</strong> No se encontraron resultados para los datos ingresados. Verifique e intente nuevamente.</div>
+        </div>
+
+        <div class="card-container">
+            <div class="form-group">
+                <p class="label">N° de Certificado:*</p>
+                <div class="mat-mdc-text-field-wrapper" id="wrap_folio">
+                    <input type="text" id="folio_input" class="mdc-text-field__input" autocomplete="off" oninput="checkInput()" onfocus="setFocus('wrap_folio')" onblur="removeFocus('wrap_folio')">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <p class="label">País:*</p>
+                <div class="mat-mdc-text-field-wrapper" id="wrap_pais">
+                    <select id="pais_input" class="mdc-text-field__input" onchange="checkInput()" onfocus="setFocus('wrap_pais')" onblur="removeFocus('wrap_pais')">
+                        <option value="">--Seleccione--</option>
+                        <option value="CL">Chile</option>
+                        <option value="AR">Argentina</option>
+                        <option value="PE">Perú</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group" id="grupo_documento" style="display: none;">
+                <p class="label">Documento:*</p>
+                <div class="mat-mdc-text-field-wrapper" id="wrap_doc">
+                    <input type="text" id="documento_input" class="mdc-text-field__input" autocomplete="off" onfocus="setFocus('wrap_doc')" onblur="removeFocus('wrap_doc')">
+                </div>
+            </div>
+
+            <div class="buttons">
+                <div class="fake-captcha">
+                    <input type="checkbox" id="chk_robot">
+                    <span>No soy un robot</span>
+                    <div class="captcha-logo-box">
+                        <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA"><br>
+                        reCAPTCHA<br>Privacidad - Condiciones
+                    </div>
+                </div>
+
+                <button class="mat-mdc-raised-button" id="btn-validar" disabled onclick="validarDicom()">CONSULTAR</button>
+            </div>
+
+            <p class="footer-card">
+                A través de Certificados, evitas falsificación de documentos y aseguras la autenticidad del certificado que te ha sido entregado a través de las plataformas proporcionadas por Equifax
+            </p>
+        </div>
     </div>
 
-    <p class="footer-text">
-        A través de Certificados, evitas falsificación de documentos y aseguras la autenticidad del certificado que te ha sido entregado a través de las plataformas proporcionadas por Equifax.
-    </p>
+    <div id="result-view" style="display: none;">
+        <div class="titulo-sub-bloque-responsive">Resultado de la Verificación</div>
+
+        <div class="spinner-wrapper" id="spinner-section">
+            <div class="spinner"></div>
+            <p style="color: #5b6771; font-size: 15px;">Consultando registros oficiales...</p>
+        </div>
+
+        <div id="result-section" style="display: none;">
+            <div class="alert-success">
+                <span style="font-size: 24px;">✅</span>
+                <div>
+                    <strong>Verificación Exitosa</strong><br>
+                    El certificado consultado es válido y auténtico. Corresponde a un documento oficial emitido por Equifax.
+                </div>
+            </div>
+            
+            <div class="pdf-wrapper">
+                <iframe id="pdf-frame" title="Certificado Dicom"></iframe>
+                <div class="watermark"></div>
+            </div>
+            
+            <div class="buttons" style="justify-content: flex-end;">
+                <button class="mat-mdc-raised-button" onclick="location.reload()" style="background-color: #5f6a72;">NUEVA CONSULTA</button>
+            </div>
+        </div>
+    </div>
+
 </div>
 
-<div id="result-view" class="main-card" style="display: none;">
-    <h2 class="main-title" style="border-bottom: none; margin-bottom: 0;">Resultado de la Verificación</h2>
-
-    <div class="spinner-wrapper" id="spinner-section">
-        <div class="spinner"></div>
-        <p style="color: var(--equifax-label); font-size: 15px;">Consultando registros oficiales...</p>
-    </div>
-
-    <div id="result-section" style="display: none;">
-        
-        <div class="alert-success">
-            <span class="alert-icon">✅</span>
-            <div>
-                <strong>Verificación Exitosa</strong><br>
-                El certificado consultado es válido y auténtico. Corresponde a un documento oficial emitido por Equifax.
-            </div>
+<div class="footer">
+    <div class="footer-container">
+        <div class="footer-left">
+            <img src="https://49659256.fs1.hubspotusercontent-na1.net/hubfs/49659256/PDFS/LOGOS%20AFP/LOGO%20EQUIFAX.png" alt="Equifax" style="filter: brightness(0) invert(1);">
+            <p>Copyright 2023 Equifax Inc. Todos los derechos reservados.</p>
+            <p>Equifax y las marcas de Equifax utilizadas en este sitio son de titularidad de Equifax inc. y sus filiales.</p>
         </div>
-        
-        <div class="pdf-wrapper">
-            <iframe id="pdf-frame" title="Certificado Dicom"></iframe>
-            <div class="watermark"></div>
-        </div>
-        
-        <div style="text-align: right;">
-            <button class="btn-restart" onclick="location.reload()">NUEVA CONSULTA</button>
+        <div class="footer-right">
+            <p>Servicio al Cliente <a href="tel:6003784329" style="font-weight: 500;">600-3784329</a></p>
+            <p><a href="mailto:equifax@equifax.cl" style="font-weight: 500;">equifax@equifax.cl</a></p>
         </div>
     </div>
 </div>
 
 <script>
-    // Webhook de Make.com
+    // Efectos visuales de foco para los inputs
+    function setFocus(id) { document.getElementById(id).classList.add('focused'); }
+    function removeFocus(id) { document.getElementById(id).classList.remove('focused'); }
+
     const WEBHOOK = 'https://hook.us2.make.com/iq6ps3txx1jaxr91mje7sx47ynbta3kb';
 
     // AUTOLLENADO DESDE EL CÓDIGO QR
@@ -390,7 +425,6 @@
             document.getElementById('folio_input').value = folio;
             document.getElementById('pais_input').value = "CL";
             if(rut) {
-                // Formatear el rut si viene por URL
                 let value = rut.replace(/[^0-9kK]/g, '').toUpperCase();
                 if (value.length > 1) {
                     let cuerpo = value.slice(0, -1).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
@@ -407,7 +441,6 @@
     // FORMATEADOR AUTOMÁTICO DE RUT CHILENO
     document.getElementById('documento_input').addEventListener('input', function (e) {
         let value = e.target.value.replace(/[^0-9kK]/g, '').toUpperCase();
-        
         if (value.length > 1) {
             let cuerpo = value.slice(0, -1).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
             let dv = value.slice(-1);
@@ -415,7 +448,6 @@
         } else {
             e.target.value = value;
         }
-        
         checkInput();
     });
 
@@ -427,23 +459,21 @@
         const btn = document.getElementById('btn-validar');
         const errorBox = document.getElementById('error-message');
         
-        folioInput.classList.remove('has-error');
+        document.getElementById('wrap_folio').classList.remove('has-error');
         errorBox.style.display = 'none';
 
-        // Lógica para mostrar/ocultar el campo Documento
-        if (folioInput.value.trim().length > 0 && paisInput.value !== "") {
+        // Mostrar Documento solo si N° de Certificado tiene texto
+        if (folioInput.value.trim().length > 0) {
             docGroup.style.display = 'block';
         } else {
             docGroup.style.display = 'none';
             docInput.value = ""; 
         }
 
-        // Activa el botón
+        // Habilitar botón solo si todo está lleno
         if (folioInput.value.trim().length > 0 && paisInput.value !== "" && docInput.value.trim().length > 0) {
-            btn.classList.add('active');
             btn.removeAttribute('disabled');
         } else {
-            btn.classList.remove('active');
             btn.setAttribute('disabled', 'true');
         }
     }
@@ -458,9 +488,8 @@
         const errorBox = document.getElementById('error-message');
 
         if (!folio || paisInput.value === "" || !documento) {
-            errorBox.innerHTML = "<span class='alert-icon'>⚠️</span><div><strong>Atención:</strong> Por favor, complete todos los campos obligatorios.</div>";
             errorBox.style.display = 'flex';
-            if(!folio) folioInput.classList.add('has-error');
+            if(!folio) document.getElementById('wrap_folio').classList.add('has-error');
             return;
         }
 
@@ -486,26 +515,20 @@
 
             if (data.found === true && data.pdf) {
                 document.getElementById('result-section').style.display = 'block';
-                
                 const pdfSrc = data.pdf.startsWith('data:') ? data.pdf : 'data:application/pdf;base64,' + data.pdf;
                 document.getElementById('pdf-frame').src = pdfSrc + "#toolbar=0";
-            } 
-            else {
+            } else {
                 document.getElementById('result-view').style.display = 'none'; 
                 document.getElementById('front-view').style.display = 'block'; 
-                
-                errorBox.innerHTML = "<span class='alert-icon'>⚠️</span><div><strong>Atención:</strong> No se encontraron resultados para el N° de Certificado y País ingresados. Por favor, verifique e intente nuevamente.</div>";
                 errorBox.style.display = 'flex';
-                
-                folioInput.classList.add('has-error');
+                document.getElementById('wrap_folio').classList.add('has-error');
                 folioInput.select();
             }
         } catch (error) {
             console.error(error);
             document.getElementById('result-view').style.display = 'none';
             document.getElementById('front-view').style.display = 'block';
-            
-            errorBox.innerHTML = "<span class='alert-icon'>🔌</span><div><strong>Error de conexión:</strong> No pudimos conectar con el servidor oficial. Verifique su internet e intente más tarde.</div>";
+            errorBox.innerHTML = "<span style='font-size: 20px;'>🔌</span><div><strong>Error de conexión:</strong> No pudimos conectar con el servidor oficial. Verifique su internet e intente más tarde.</div>";
             errorBox.style.display = 'flex';
         }
     }
