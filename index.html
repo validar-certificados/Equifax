@@ -7,26 +7,39 @@
     
     <link rel="icon" type="image/png" href="https://www.google.com/s2/favicons?domain=equifax.cl&sz=128">
     
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700&display=swap" />
     
     <style>
         /* =========================================================
-           ESTILOS GLOBALES (Usando Open Sans como el sitio original)
+           VARIABLES CORPORATIVAS (Extraídas del código fuente Angular)
+           ========================================================= */
+        :root {
+            --equifax-red: #9e1b32;
+            --equifax-red-dark: #82101f;
+            --equifax-bg: #f0f0f0;
+            --equifax-input-bg: #f6f6f6;
+            --equifax-text: rgba(0, 0, 0, 0.87);
+            --equifax-label: rgba(0, 0, 0, 0.54);
+            --font-family: 'Open Sans', sans-serif;
+        }
+
+        /* =========================================================
+           ESTILOS GLOBALES
            ========================================================= */
         body, html { 
             margin: 0; 
             padding: 0; 
-            background-color: #f4f4f4; 
-            font-family: 'Open Sans', Roboto, Arial, sans-serif; 
+            background-color: var(--equifax-bg); 
+            font-family: var(--font-family); 
+            color: var(--equifax-text);
         }
 
         /* =========================================================
            HEADER FIJO EQUIFAX
            ========================================================= */
         .equifax-header {
-            background-color: #9F0B1A; 
+            background-color: var(--equifax-red); 
             padding: 15px 20px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
@@ -44,38 +57,36 @@
         }
 
         /* =========================================================
-           CONTENEDOR BASE (Válido para Formulario y Resultados)
+           CONTENEDOR BASE
            ========================================================= */
         .main-card {
-            background-color: #f2f2f2; 
+            background-color: transparent; /* Se mimetiza con el fondo f0f0f0 */
             max-width: 850px;
             margin: 40px auto;
             padding: 40px 7%;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
             box-sizing: border-box;
         }
 
         .main-title {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Roboto', sans-serif; /* Títulos en Roboto según Angular Material */
             font-size: 24px;
-            font-weight: 500;
-            color: #000000;
+            font-weight: 400;
             margin-top: 0;
             margin-bottom: 25px;
             padding-bottom: 15px;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid rgba(0,0,0,0.12);
         }
 
         /* =========================================================
-           ALERTAS CORPORATIVAS
+           ALERTAS
            ========================================================= */
         .alert-error {
             display: none;
             background-color: #FDF3F3;
-            color: #8A0000;
+            color: var(--equifax-red-dark);
             border: 1px solid #E5A8A8;
             padding: 15px 20px;
-            border-radius: 2px;
+            border-radius: 4px;
             margin-bottom: 25px;
             font-size: 15px;
             line-height: 1.4;
@@ -88,14 +99,13 @@
             background-color: #F2F9F2; 
             color: #005C05; 
             padding: 18px 25px; 
-            border-radius: 2px; 
+            border-radius: 4px; 
             border: 1px solid #88C08A; 
             margin-bottom: 25px; 
             font-size: 16px; 
             display: flex;
             align-items: center;
             gap: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
 
         .alert-icon {
@@ -104,7 +114,7 @@
         }
 
         /* =========================================================
-           VISTA FRONTAL (FORMULARIO)
+           VISTA FRONTAL (FORMULARIO MATERIAL DESIGN)
            ========================================================= */
         .form-group {
             margin-bottom: 30px;
@@ -112,37 +122,37 @@
 
         .form-label {
             display: block;
-            color: #C00000; 
+            color: var(--equifax-red); 
             font-size: 15px;
-            margin-bottom: 8px;
-            font-weight: 400;
+            margin-bottom: 5px;
+            font-weight: 500;
         }
 
         .form-control {
             width: 100%;
-            background-color: #FCFCFC; 
+            background-color: var(--equifax-input-bg); 
             border-width: 0 0 1px 0;   
-            border-color: #000000;     
+            border-color: rgba(0, 0, 0, 0.42); /* Gris oscuro Material */
             border-style: solid;
-            border-radius: 0;          
-            padding: 18px 10px;        
-            height: 55px;              
+            border-radius: 4px 4px 0 0; /* Bordes superiores levemente redondeados típico de Material */
+            padding: 18px 15px 10px 15px;        
+            height: 56px; /* Altura oficial Material Form Field */
             font-size: 16px;
-            color: #333;
+            color: var(--equifax-text);
             box-sizing: border-box;
             outline: none;
             transition: border-color 0.2s, background-color 0.2s;
-            font-family: 'Open Sans', Roboto, sans-serif;
+            font-family: var(--font-family);
         }
 
         .form-control:focus, .form-control:hover {
-            border-color: rgba(31, 41, 51, 0.6); 
+            border-color: var(--equifax-red); /* La línea se pone roja al hacer click */
+            border-width: 0 0 2px 0;
+            background-color: #eeeeee;
         }
 
         .form-control.has-error {
-            border-color: #C00000;
-            border-width: 1px;
-            background-color: #FFF9F9;
+            border-color: #f11919; /* Warn color del CSS */
         }
 
         select.form-control {
@@ -153,7 +163,6 @@
             background-repeat: no-repeat;
             background-position: right 10px center;
             background-size: 20px;
-            color: #666;
         }
 
         .action-row {
@@ -174,7 +183,6 @@
             width: 280px;
             box-sizing: border-box;
             font-size: 14px;
-            color: #222;
         }
 
         .fake-captcha input[type="checkbox"] {
@@ -187,7 +195,7 @@
             margin-left: auto;
             text-align: center;
             font-size: 9px;
-            color: #555;
+            color: var(--equifax-label);
         }
 
         .captcha-logo-box img {
@@ -195,31 +203,38 @@
             margin-bottom: 2px;
         }
 
+        /* Botón estilo Angular Material Raised Button */
         .btn-consultar {
-            background-color: #E0E0E0;
-            color: #888;
+            background-color: #e0e0e0;
+            color: rgba(0,0,0,0.38);
             border: none;
-            padding: 15px 40px; 
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: 'Open Sans', Roboto, sans-serif;
+            padding: 0 16px; 
+            height: 36px;
+            min-width: 110px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: not-allowed;
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .btn-consultar.active {
-            background-color: #9F0B1A; 
+            background-color: var(--equifax-red); 
             color: #ffffff;
+            cursor: pointer;
+            box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
         }
         .btn-consultar.active:hover {
-            background-color: #7a0814; 
+            background-color: var(--equifax-red-dark); 
         }
 
         .footer-text {
             text-align: center;
             font-size: 13px;
-            color: #333;
+            color: var(--equifax-label);
             margin-top: 50px;
             line-height: 1.5;
         }
@@ -231,8 +246,10 @@
             position: relative; 
             width: 100%; 
             height: 600px; 
-            border: 1px solid #dcdcdc; 
+            border: 1px solid rgba(0,0,0,0.12); 
             background: #fff; 
+            border-radius: 4px;
+            overflow: hidden;
         }
         .pdf-wrapper iframe { 
             width: 100%; 
@@ -254,22 +271,25 @@
         }
         
         .spinner-wrapper { display: none; text-align: center; padding: 60px 0; }
-        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #9F0B1A; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 15px; }
+        .spinner { border: 4px solid rgba(158, 27, 50, 0.25); border-top: 4px solid var(--equifax-red); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 15px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
         .btn-restart { 
-            background-color: #555; 
+            background-color: var(--equifax-red); 
             color: #fff; 
             border: none; 
-            padding: 12px 25px; 
-            font-size: 15px; 
-            border-radius: 3px; 
+            padding: 0 16px; 
+            height: 36px;
+            font-size: 14px; 
+            font-weight: 500;
+            border-radius: 4px; 
             cursor: pointer; 
             transition: background 0.2s; 
             margin-top: 20px;
-            font-family: 'Open Sans', Roboto, sans-serif;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
         }
-        .btn-restart:hover { background-color: #333; }
+        .btn-restart:hover { background-color: var(--equifax-red-dark); }
 
     </style>
 </head>
@@ -319,7 +339,7 @@
             </div>
         </div>
 
-        <button class="btn-consultar" id="btn-validar" onclick="validarDicom()">Consultar</button>
+        <button class="btn-consultar" id="btn-validar" onclick="validarDicom()">CONSULTAR</button>
     </div>
 
     <p class="footer-text">
@@ -332,7 +352,7 @@
 
     <div class="spinner-wrapper" id="spinner-section">
         <div class="spinner"></div>
-        <p style="color: #666; font-size: 16px;">Consultando registros oficiales...</p>
+        <p style="color: var(--equifax-label); font-size: 15px;">Consultando registros oficiales...</p>
     </div>
 
     <div id="result-section" style="display: none;">
@@ -351,7 +371,7 @@
         </div>
         
         <div style="text-align: right;">
-            <button class="btn-restart" onclick="location.reload()">Realizar Nueva Consulta</button>
+            <button class="btn-restart" onclick="location.reload()">NUEVA CONSULTA</button>
         </div>
     </div>
 </div>
@@ -410,7 +430,7 @@
         folioInput.classList.remove('has-error');
         errorBox.style.display = 'none';
 
-        // Lógica para mostrar/ocultar el campo Documento (Posición 3)
+        // Lógica para mostrar/ocultar el campo Documento
         if (folioInput.value.trim().length > 0 && paisInput.value !== "") {
             docGroup.style.display = 'block';
         } else {
@@ -418,11 +438,13 @@
             docInput.value = ""; 
         }
 
-        // El botón se activa solo si todos los campos requeridos están listos
+        // Activa el botón
         if (folioInput.value.trim().length > 0 && paisInput.value !== "" && docInput.value.trim().length > 0) {
             btn.classList.add('active');
+            btn.removeAttribute('disabled');
         } else {
             btn.classList.remove('active');
+            btn.setAttribute('disabled', 'true');
         }
     }
 
@@ -462,14 +484,12 @@
             
             document.getElementById('spinner-section').style.display = 'none';
 
-            // CASO APROBADO
             if (data.found === true && data.pdf) {
                 document.getElementById('result-section').style.display = 'block';
                 
                 const pdfSrc = data.pdf.startsWith('data:') ? data.pdf : 'data:application/pdf;base64,' + data.pdf;
                 document.getElementById('pdf-frame').src = pdfSrc + "#toolbar=0";
             } 
-            // CASO RECHAZADO
             else {
                 document.getElementById('result-view').style.display = 'none'; 
                 document.getElementById('front-view').style.display = 'block'; 
@@ -491,10 +511,10 @@
     }
 
     document.getElementById('folio_input').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') validarDicom();
+        if (e.key === 'Enter') document.getElementById('btn-validar').click();
     });
     document.getElementById('documento_input').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') validarDicom();
+        if (e.key === 'Enter') document.getElementById('btn-validar').click();
     });
 </script>
 
