@@ -24,7 +24,7 @@
         @media (min-width: 1200px) { .toolbar-container { width: 1240px; } }
         
         .logo-equifax-container { max-width: 125px; margin: auto; display: flex; align-items: center; height: 100%;}
-        .logo-equifax { width: 100%; vertical-align: middle; filter: brightness(0) invert(1); }
+        .logo-equifax { width: 100%; vertical-align: middle; }
         @media (max-width: 700px) { .logo-equifax.desktop { display: none; } .logo-equifax.mobile { display: block; max-width: 40px; } .toolbar-container { grid-template-columns: minmax(90px, 120px) 1.5fr; gap: 0; } }
         @media (min-width: 701px) { .logo-equifax.mobile { display: none; } .logo-equifax.desktop { display: block; } }
 
@@ -34,7 +34,7 @@
         @media (min-width: 992px) { .container { max-width: 960px; } }
         @media (min-width: 1200px) { .container { max-width: 1140px; } }
 
-        .titulo-sub-bloque-responsive { font-size: calc(16px + 8 * (100vw - 300px) / 1300); font-weight: bold; color: #5b6771; margin-bottom: 20px; }
+        .titulo-sub-bloque-responsive { font-size: calc(16px + 8 * (100vw - 300px) / 1300); font-weight: bold; color: black; margin-bottom: 20px; }
         p.label { text-align: left; padding-left: 15px; color: #ae0000; margin-bottom: 5px; font-size: 14px; font-weight: 500; margin-top: 0; }
         .form-group { margin-bottom: 20px; }
 
@@ -60,7 +60,7 @@
         @media (min-width: 768px) { .footer-container { max-width: 720px; flex-direction: row; justify-content: space-between; align-items: flex-start;} }
         @media (min-width: 992px) { .footer-container { max-width: 960px; } }
         @media (min-width: 1200px) { .footer-container { max-width: 1240px; } }
-        .footer-left img { margin-bottom: 10px; height: 25px; filter: brightness(0) invert(1); }
+        .footer-left img { margin-bottom: 10px; height: 35px; } 
         .footer-left p { margin: 0 0 5px 0; font-size: 13px; }
         .footer-right { text-align: left; }
         @media (min-width: 768px) { .footer-right { text-align: right; } }
@@ -104,7 +104,7 @@
         <app-verificacion>
             
             <div class="container" id="front-view">
-                <div class="titulo-sub-bloque-responsive">Verificación de Certificados o Informes</div>
+                <div class="titulo-sub-bloque-responsive" style="color: black;">Verificación de Certificados o Informes</div>
                 
                 <div id="error-message" class="alert-error">
                     <span style="font-size: 20px;">⚠️</span>
@@ -167,7 +167,7 @@
             </div>
             
             <div class="container" id="result-view" style="display: none;">
-                <div class="titulo-sub-bloque-responsive">Resultado de la Verificación</div>
+                <div class="titulo-sub-bloque-responsive" style="color: black;">Resultado de la Verificación</div>
                 
                 <div class="spinner-wrapper" id="spinner-section">
                     <div class="spinner"></div>
@@ -200,7 +200,7 @@
             <div class="footer">
                 <div class="footer-container">
                     <div class="footer-left">
-                        <img src="https://49659256.fs1.hubspotusercontent-na1.net/hubfs/49659256/PDFS/LOGOS%20AFP/LogoBlanco.png" alt="Equifax">
+                        <img src="https://49659256.fs1.hubspotusercontent-na1.net/hubfs/49659256/PDFS/LOGOS%20AFP/efx-iso-blanco.png" alt="Equifax">
                         <p>Copyright 2023 Equifax Inc. Todos los derechos reservados.</p>
                         <p>Equifax y las marcas de Equifax utilizadas en este sitio son de titularidad de Equifax inc. y sus filiales.</p>
                     </div>
